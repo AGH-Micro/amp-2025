@@ -31,7 +31,7 @@ static char adc3_BuffVoltage[20];
 
 volatile static double procent = 0.0;
 
-// functions needed to complete tasks above
+// above variables needed to complete tasks
 
 
 
@@ -40,17 +40,17 @@ void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef *hadc) // adc handler
 {
 	if(hadc->Instance == ADC1)
 	{
-		adc1_Output = HAL_ADC_GetValue(hadc); // flaga = adc1_Ready
+		adc1_Output = HAL_ADC_GetValue(hadc); // flag = adc1_Ready
 		adc1_Ready = 1;
 	}
 	if(hadc->Instance == ADC3)
 	{
-		adc2_Output = HAL_ADC_GetValue(hadc); // flaga = adc2_Ready
+		adc2_Output = HAL_ADC_GetValue(hadc); // flag = adc2_Ready
 		adc2_Ready = 1;
 	}
 	if(hadc->Instance == ADC3)
 	{
-		adc3_Output = HAL_ADC_GetValue(hadc); // flaga = adc3_Ready
+		adc3_Output = HAL_ADC_GetValue(hadc); // flag = adc3_Ready
 		adc3_Ready = 1;
 	}
 
@@ -157,4 +157,5 @@ void VCOM_Init(void)
   }
 }
 */
+
 
