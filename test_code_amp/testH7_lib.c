@@ -28,7 +28,7 @@ static char adc3_BuffVoltage[20];
 
 volatile static double procent = 0.0;
 
-// functions needed to complete tasks above
+// above variables needed to complete tasks
 
 
 
@@ -154,4 +154,5 @@ void VCOM_Init(void)
   }
 }
 */
+
 
