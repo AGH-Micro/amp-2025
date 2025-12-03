@@ -1,7 +1,10 @@
+.vscode/
+
 # Prerequisites
 *.d
 
-# Object files
+
+# Object filess
 *.o
 *.ko
 *.obj

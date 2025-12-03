@@ -11,12 +11,9 @@ volatile uint8_t adc1_Ready = 0;
 volatile uint8_t adc2_Ready = 0;
 volatile uint8_t adc3_Ready = 0;
 
-
-
 volatile uint16_t adc1_Output = 0;
 volatile uint16_t adc2_Output = 0;
 volatile uint16_t adc3_Output = 0;
-
 
 volatile static double adc1_OutputVoltage = 0.0;
 volatile static double adc2_OutputVoltage = 0.0;
@@ -40,17 +37,17 @@ void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef *hadc) // adc handler
 {
 	if(hadc->Instance == ADC1)
 	{
-		adc1_Output = HAL_ADC_GetValue(hadc); // flaga = adc1_Ready
+		adc1_Output = HAL_ADC_GetValue(hadc); // flag = adc1_Ready
 		adc1_Ready = 1;
 	}
 	if(hadc->Instance == ADC3)
 	{
-		adc2_Output = HAL_ADC_GetValue(hadc); // flaga = adc2_Ready
+		adc2_Output = HAL_ADC_GetValue(hadc); // flag = adc2_Ready
 		adc2_Ready = 1;
 	}
 	if(hadc->Instance == ADC3)
 	{
-		adc3_Output = HAL_ADC_GetValue(hadc); // flaga = adc3_Ready
+		adc3_Output = HAL_ADC_GetValue(hadc); // flag = adc3_Ready
 		adc3_Ready = 1;
 	}
 
@@ -73,8 +70,8 @@ void testADC(ADC_HandleTypeDef* hadc, double vRef) // function to check Output o
 		 adc2_Ready = 0;
 		 adc2_OutputVoltage = vRef - vRef*((double)adc2_Output/((double)0xFFFF));
 		 procent = (adc2_OutputVoltage*100)/vRef;
-		 sprintf(adc1_Buff, "%x", adc2_Output);
-		 sprintf(adc1_BuffVoltage, "%.3f", adc2_OutputVoltage);
+		 sprintf(adc2_Buff, "%x", adc2_Output);
+		 sprintf(adc2_BuffVoltage, "%.3f", adc2_OutputVoltage);
 		 printf("Output: %sV, HexValue: %s, %%: %.2f%% \r\n", adc2_BuffVoltage, adc2_Buff, procent);
 	 }
 	 if(adc3_Ready)
@@ -82,8 +79,8 @@ void testADC(ADC_HandleTypeDef* hadc, double vRef) // function to check Output o
 		 adc3_Ready = 0;
 		 adc3_OutputVoltage = vRef - vRef*((double)adc3_Output/((double)0xFFFF));
 		 procent = (adc3_OutputVoltage*100)/vRef;
-		 sprintf(adc1_Buff, "%x", adc3_Output);
-		 sprintf(adc1_BuffVoltage, "%.3f", adc3_OutputVoltage);
+		 sprintf(adc3_Buff, "%x", adc3_Output);
+		 sprintf(adc3_BuffVoltage, "%.3f", adc3_OutputVoltage);
 		 printf("Output: %sV, HexValue: %s, %%: %.2f%% \r\n", adc3_BuffVoltage, adc3_Buff, procent);
 	 }
 
