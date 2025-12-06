@@ -5,14 +5,12 @@
 - ADC1: channel 2 and channel 5
 - ADC2: channel 2 and channel 18
 - ADC3: channel 2 and channel 3
-
-## What is tested but not working:
-- Communication via Ethernet
-  #### Actions taken so far:
-  - removed short circuit between TXD0 and TXEN
-  - changed pin configuration in the code
+- Communication via Ethernet (working after fixing short circuit and changing the code)
+  - Short circuit between TXD0 and TXEN was removed
+  - Pin configuration in the code was updated:
     - PG11 -> PB11
     - PG13 -> PB12
+  - The clock configuration in `SystemClock_Config()` was updated
 
 ## What is not tested:
 - SPI
@@ -21,4 +19,4 @@
 ## To do:
 - [ ] DSP code implementation
 - [ ] Web app using UART for communication
-- [ ] Debug Ethernet communication (if possible)
+- [x] Debug Ethernet communication (if possible)
