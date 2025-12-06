@@ -1,0 +1,17 @@
+C:/Users/Kinga1606/Desktop/maybethis_ethernet/LwIP_TCP_Echo_Server/Src/ethernetif.c:146:13:low_level_init	2
+C:/Users/Kinga1606/Desktop/maybethis_ethernet/LwIP_TCP_Echo_Server/Src/ethernetif.c:216:14:low_level_output	5
+C:/Users/Kinga1606/Desktop/maybethis_ethernet/LwIP_TCP_Echo_Server/Src/ethernetif.c:264:22:low_level_input	2
+C:/Users/Kinga1606/Desktop/maybethis_ethernet/LwIP_TCP_Echo_Server/Src/ethernetif.c:285:6:ethernetif_input	4
+C:/Users/Kinga1606/Desktop/maybethis_ethernet/LwIP_TCP_Echo_Server/Src/ethernetif.c:316:7:ethernetif_init	2
+C:/Users/Kinga1606/Desktop/maybethis_ethernet/LwIP_TCP_Echo_Server/Src/ethernetif.c:345:6:pbuf_free_custom	2
+C:/Users/Kinga1606/Desktop/maybethis_ethernet/LwIP_TCP_Echo_Server/Src/ethernetif.c:363:7:sys_now	1
+C:/Users/Kinga1606/Desktop/maybethis_ethernet/LwIP_TCP_Echo_Server/Src/ethernetif.c:375:6:HAL_ETH_MspInit	1
+C:/Users/Kinga1606/Desktop/maybethis_ethernet/LwIP_TCP_Echo_Server/Src/ethernetif.c:430:9:ETH_PHY_IO_Init	1
+C:/Users/Kinga1606/Desktop/maybethis_ethernet/LwIP_TCP_Echo_Server/Src/ethernetif.c:447:9:ETH_PHY_IO_DeInit	1
+C:/Users/Kinga1606/Desktop/maybethis_ethernet/LwIP_TCP_Echo_Server/Src/ethernetif.c:459:9:ETH_PHY_IO_ReadReg	2
+C:/Users/Kinga1606/Desktop/maybethis_ethernet/LwIP_TCP_Echo_Server/Src/ethernetif.c:476:9:ETH_PHY_IO_WriteReg	2
+C:/Users/Kinga1606/Desktop/maybethis_ethernet/LwIP_TCP_Echo_Server/Src/ethernetif.c:490:9:ETH_PHY_IO_GetTick	1
+C:/Users/Kinga1606/Desktop/maybethis_ethernet/LwIP_TCP_Echo_Server/Src/ethernetif.c:499:6:ethernet_link_check_state	10
+C:/Users/Kinga1606/Desktop/maybethis_ethernet/LwIP_TCP_Echo_Server/Src/ethernetif.c:554:6:HAL_ETH_RxAllocateCallback	2
+C:/Users/Kinga1606/Desktop/maybethis_ethernet/LwIP_TCP_Echo_Server/Src/ethernetif.c:574:6:HAL_ETH_RxLinkCallback	5
+C:/Users/Kinga1606/Desktop/maybethis_ethernet/LwIP_TCP_Echo_Server/Src/ethernetif.c:610:6:HAL_ETH_TxFreeCallback	1
