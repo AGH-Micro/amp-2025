@@ -1,30 +1,7 @@
-21:48:44 **** Incremental Build of configuration Debug for project fkingwork ****
+22:09:55 **** Incremental Build of configuration Debug for project fkingwork ****
 make -j8 all 
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_PWR_LDO_SUPPLY -DUSE_NUCLEO_64 -DUSE_HAL_DRIVER -DSTM32H723xx -c -I../Core/Inc -I"C:/Projects/Amp2025/stm/plswork/fkingwork/Drivers/CMSIS/DSP/Include" -I../Drivers/STM32H7xx_HAL_Driver/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../Drivers/BSP/STM32H7xx_Nucleo -I../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
-../Core/Src/main.c: In function 'coeff':
-../Core/Src/main.c:84:22: warning: variable 'status_inv' set but not used [-Wunused-but-set-variable]
-   84 |           arm_status status_inv;
-      |                      ^~~~~~~~~~
-../Core/Src/main.c:83:22: warning: variable 'status_mult3' set but not used [-Wunused-but-set-variable]
-   83 |           arm_status status_mult3;
-      |                      ^~~~~~~~~~~~
-../Core/Src/main.c:82:22: warning: variable 'status_mult2' set but not used [-Wunused-but-set-variable]
-   82 |           arm_status status_mult2;
-      |                      ^~~~~~~~~~~~
-../Core/Src/main.c:81:22: warning: variable 'status_mult1' set but not used [-Wunused-but-set-variable]
-   81 |           arm_status status_mult1;
-      |                      ^~~~~~~~~~~~
-../Core/Src/main.c:80:22: warning: variable 'status_trans' set but not used [-Wunused-but-set-variable]
-   80 |           arm_status status_trans;
-      |                      ^~~~~~~~~~~~
-arm-none-eabi-gcc -o "fkingwork.elf" @"objects.list"  -larm_cortexM4lf_math -mcpu=cortex-m7 -T"C:\Projects\Amp2025\stm\plswork\fkingwork\STM32H723ZGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="fkingwork.map" -Wl,--gc-sections -static -L"C:\Projects\Amp2025\stm\plswork\fkingwork\Drivers\CMSIS\DSP\Lib\GCC" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: fkingwork.elf
- 
 arm-none-eabi-size  fkingwork.elf 
-arm-none-eabi-objdump -h -S fkingwork.elf  > "fkingwork.list"
    text	   data	    bss	    dec	    hex	filename
-  43668	    540	   2124	  46332	   b4fc	fkingwork.elf
+  43644	    540	   2124	  46308	   b4e4	fkingwork.elf
 Finished building: default.size.stdout
- 
-Finished building: fkingwork.list
  

@@ -115,8 +115,8 @@ void calc_scal(float32_t x[5],float32_t y[5],float32_t *phi,float32_t dc[2],floa
 	float32_t y_buff[5]={};
 	float32_t x_buff_n[5]={};
 	float32_t y_buff_n[5]={};
-	float32_t max_min_x[2]={30000.0,-300000.0}; // min and max of y and x
-	float32_t max_min_y[2]={30000.0,-300000.0};
+	float32_t max_min_x[2]={}; // min and max of y and x
+	float32_t max_min_y[2]={};
 
 	for(int i=0; i<5;i++){
 		x_buff[i]=x[i]-dc[0];
