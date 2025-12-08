@@ -1,0 +1,27 @@
+@import url('../imports.css');
+
+.log-console {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    background: linear-gradient(135deg, var(--background-color1) 0%, var(--background-color2) 100%);
+    max-width: 95%;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    min-height: 0;
+}
+
+.log-console__title {
+    margin: 0 0 10px 0;
+    font-size: 16px;
+}
+
+.log-console__content {
+    height: 100%;
+    overflow-y: scroll;
+    font-size: 14px;
+    font-family: monospace;
+    line-height: 1.4;
+}

@@ -1,0 +1,96 @@
+@import url('../imports.css');
+.settings-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: linear-gradient(135deg, var(--background-color1) 0%, var(--background-color2) 100%);
+    display: flex;
+    border: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    animation: fadeInBg 0.4s;
+}
+
+.settings-modal {
+    background: linear-gradient(135deg, var(--background-color1) 0%, var(--background-color2) 100%);
+    padding: 30px;
+    border-radius: 10px;
+    min-width: 350px;
+    text-align: center;
+    box-shadow: 0 0px 40px var(--shadow);
+    animation: popIn 0.4s;
+}
+
+.settings-modal__title {
+    margin: 0 0 15px 0;
+    font-size: 20px;
+    color: var(--font_color)
+}
+
+.settings-modal__current {
+    margin: 10px 0;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--font_color);
+}
+
+.settings-modal__input {
+    margin: 10px;
+    padding: 10px;
+    font-size: 16px;
+    width: 200px;
+    color: var(--font_color);
+    background: var(--background-color3);
+    border: 1px solid var(--border);
+    border-radius: 5px;
+}
+
+.settings-modal__buttons {
+    margin-top: 20px;
+}
+
+.settings-modal__button {
+    margin: 5px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.settings-modal__button--confirm {
+    background-color: var(--confirm);
+    color: white;
+}
+
+.settings-modal__button--confirm:hover {
+    background-color: var(--confirm_s);
+}
+
+.settings-modal__button--cancel {
+    background-color: var(--decilne);
+    color: white;
+}
+
+.settings-modal__button--cancel:hover {
+    background-color: var(--decilne_s);
+}
+
+@keyframes fadeInBg {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+@keyframes popIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.85);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}

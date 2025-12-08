@@ -1,0 +1,110 @@
+@import url("./imports.css");
+
+html,
+body {
+    overflow: hidden;
+    height: 100vh;
+    width: 100vw;
+}
+
+.app-container {
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(
+        135deg,
+        var(--shadow) 0%,
+        var(--panel-smoke) 50%,
+        var(--border)
+    );
+    color: var(--font_color);
+    font-family: "Montserrat";
+    display: flex;
+    flex-direction: column;
+}
+
+.app-header {
+    display: flex;
+    align-items: center;
+    padding: 5px 0;
+    justify-content: center;
+    max-height: 10vh;
+}
+
+.app-logo {
+    height: 56px; /* set height (decrease/increase) */
+    width: auto;
+    object-fit: contain;
+    display: inline-block;
+    vertical-align: middle;
+    pointer-events: none; /* optional: decorative logo */
+    margin-right: 10px;
+}
+
+.app-acc_logo {
+    height: 70px; /* set height (decrease/increase) */
+    width: auto;
+    object-fit: contain;
+    display: inline-block;
+    vertical-align: middle;
+    pointer-events: none;
+    margin-left: 10px;
+}
+
+.app-title {
+    margin: 0;
+    font-size: 24px;
+    font: "Montserrat";
+    color: (var(--font_color));
+}
+
+.app-main {
+    flex: 1;
+    display: flex;
+    padding: 5px;
+    gap: 5px;
+    max-width: 100vw;
+    box-sizing: border-box;
+    max-height: 90vh;
+}
+
+@media (max-width: 1000px) {
+    .app-main {
+        margin-bottom: max(
+            50px,
+            calc(env(safe-area-inset-bottom) + 50px)
+        ); /* ADD */
+    }
+}
+
+/* Left side - charts (64%) */
+.charts-panel {
+    flex: 0 0 64%;
+    border-radius: 5px;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+    background: linear-gradient(
+        135deg,
+        var(--shadow) 0%,
+        var(--panel-smoke) 50%,
+        var(--border)
+    );
+}
+
+/* Right side - controls and logs (36%) */
+.controls-panel {
+    flex: 0 0 36%;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+/* BOTTOM - Status and buttons (minimal space) */
+.bottom-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
