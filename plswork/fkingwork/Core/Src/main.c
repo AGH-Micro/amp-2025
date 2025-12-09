@@ -1,6 +1,12 @@
 /* USER CODE BEGIN Header */
 #define MAX(a,b) ((a) > (b) ? (a) : (b))
 #define MIN(a,b) ((a) < (b) ? (a) : (b))
+#define MAX(a,b) ((a) > (b) ? (a) : (b))
+#define MIN(a,b) ((a) < (b) ? (a) : (b))
+#define SYSTICK_LOAD (SystemCoreClock/1000000U)
+#define SYSTICK_DELAY_CALIB (SYSTICK_LOAD >> 1)
+
+
 /**
   ******************************************************************************
   * @file           : main.c
@@ -21,8 +27,6 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "arm_math.h"
-
-
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 
@@ -31,17 +35,20 @@
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
 
-//przykładowa elipsa ( są 4 punkty które mają max/min x/y i jeden losowY) 				//	KOMENTARZ
+//generated ellipse
 float32_t mat_x[5] =  {2.0f, 3.6f, -0.754f, 5.356f, 1.0f};
 float32_t mat_y[5] =  {1.62f, -5.642f, -0.5f, -3.4, 1.842f};
-//bufory na zmienne																		//	KOMENTARZ
+// variable buffers
 float32_t coef[5][1]={};
 float32_t dc[2]={};
 float32_t phi = 0.0f;
 float32_t scale[2]={};
 
 
-// funkcja coeff, która bierze 5 punktów i ustawia wartości b,c,d,e,f w coef			//	KOMENTARZ
+
+
+
+//coeff calculates coefficients of general equation of ellipse
 void coeff(float32_t x[5],float32_t y[5],float32_t coef[5][1])
   {
 
@@ -52,11 +59,11 @@ void coeff(float32_t x[5],float32_t y[5],float32_t coef[5][1])
 	  arm_matrix_instance_f32 mat_M1_instance;
 	  arm_matrix_instance_f32 mat_M2_instance;
 
-	  float32_t C[5][1];
-	  float32_t M[5][5];
-	  float32_t MT[5][5];
-	  float32_t M1[5][5];
-	  float32_t M2[5][5];
+	  static float32_t C[5][1];
+	  static float32_t M[5][5];
+	  static float32_t MT[5][5];
+	  static float32_t M1[5][5];
+	  static float32_t M2[5][5];
 	  for(int i =0;i<5;i++){
 		  M[i][0]=x[i]*y[i];
 		  M[i][1]=y[i]*y[i];
@@ -76,7 +83,6 @@ void coeff(float32_t x[5],float32_t y[5],float32_t coef[5][1])
 	  arm_mat_init_f32(&mat_M1_instance,5,5,&M1[0][0]);
 	  arm_mat_init_f32(&mat_M2_instance,5,5,&M2[0][0]);
 
-	  //statusy zwracają błędy czy funkcja się udała, nie ma if żeby sprawdzić czy dobrze policzone
 	  arm_status status_trans;
 	  arm_status status_mult1;
 	  arm_status status_mult2;
@@ -91,7 +97,7 @@ void coeff(float32_t x[5],float32_t y[5],float32_t coef[5][1])
   }
 
 
-//funkcja calc_dc_phi która liczy dc[0] - OX oraz dc[1] -OY oraz phi
+//calc_dc_phi calculates the DC offstet and phi - angle offset of ellipse
 void calc_dc_phi(float32_t coef[5][1],float32_t dc[2],float32_t *phi){
 		float32_t b = coef[0][0];
 		float32_t c = coef[1][0];
@@ -108,7 +114,7 @@ void calc_dc_phi(float32_t coef[5][1],float32_t dc[2],float32_t *phi){
 }
 
 
-//funkcja scal, jej nie było w matlabie, słuzy tylko do znalezienia szerokości elipsy, czyli bierze min i max wartości spróbkowanych i oddaje scale[] który jest do skalowania X i Y
+// calc_scal calculates the width and height of ellipse for scaling
 void calc_scal(float32_t x[5],float32_t y[5],float32_t *phi,float32_t dc[2],float32_t scale[2]){
 
 	float32_t x_buff[5]={};
@@ -136,7 +142,8 @@ void calc_scal(float32_t x[5],float32_t y[5],float32_t *phi,float32_t dc[2],floa
 }
 
 
-// funkcja transform która ma być w pętli głównej, przekształca pojedyncze próbki
+// transform transforms every sample with calculated DC, phi and width/height of ellipse
+
 void transform(float32_t *I, float32_t *Q,float32_t dc[2],float32_t *phi,float32_t scale[2]){
 	*I=*I-dc[0];
 	*Q=*Q-dc[1];
@@ -184,13 +191,12 @@ static void MX_GPIO_Init(void);
   * @brief  The application entry point.
   * @retval int
   */
-
-
 int main(void)
 {
 
   /* USER CODE BEGIN 1 */
-	//jednorazowe wywołanie funkcji(w zamyśle po kalibracji) 								//	KOMENTARZ
+
+	//function call
 	coeff(mat_x,mat_y,coef);
 	calc_dc_phi(coef,dc,&phi);
 	calc_scal(mat_x, mat_y,&phi,dc,scale);
@@ -224,9 +230,9 @@ int main(void)
   /* USER CODE END 2 */
 
   /* Initialize leds */
-  BSP_LED_Init(LED_GREEN);
-  BSP_LED_Init(LED_YELLOW);
-  BSP_LED_Init(LED_RED);
+//  BSP_LED_Init(LED_GREEN);
+//  BSP_LED_Init(LED_YELLOW);
+//  BSP_LED_Init(LED_RED);
 
   /* Initialize USER push-button, will be used to trigger an interrupt each time it's pressed.*/
   BSP_PB_Init(BUTTON_USER, BUTTON_MODE_EXTI);
@@ -245,18 +251,21 @@ int main(void)
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
 
+  	  // LED blinking
+  	  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14,GPIO_PIN_SET);
+  	  HAL_Delay(1000);
+  	  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14,GPIO_PIN_RESET);
+  	  HAL_Delay(1000);
+  	  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14,GPIO_PIN_SET);
 
 
   while (1)
   {
+
 	  for(int i=0; i<5; i++){
 
 		  transform(&mat_x[i],&mat_y[i],dc,&phi,scale); // transformacja pojedynczych próbek						//	KOMENTARZ
-		  if(i==4)
-			  break;
-
 	  }
-	  break;
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
@@ -330,13 +339,25 @@ void SystemClock_Config(void)
   */
 static void MX_GPIO_Init(void)
 {
+  GPIO_InitTypeDef GPIO_InitStruct = {0};
   /* USER CODE BEGIN MX_GPIO_Init_1 */
 
   /* USER CODE END MX_GPIO_Init_1 */
 
   /* GPIO Ports Clock Enable */
   __HAL_RCC_GPIOC_CLK_ENABLE();
+  __HAL_RCC_GPIOB_CLK_ENABLE();
   __HAL_RCC_GPIOA_CLK_ENABLE();
+
+  /*Configure GPIO pin Output Level */
+  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_2|GPIO_PIN_14, GPIO_PIN_RESET);
+
+  /*Configure GPIO pins : PB2 PB14 */
+  GPIO_InitStruct.Pin = GPIO_PIN_2|GPIO_PIN_14;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
   /* USER CODE BEGIN MX_GPIO_Init_2 */
 
