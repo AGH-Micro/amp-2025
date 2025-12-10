@@ -149,15 +149,9 @@ int main() {
             // Send TEMP every ~1 second (20 * 50ms)
             if (counter % 20 == 0) {
                 float temp1 = generateRandomTemp();
-                snprintf(buffer, BUFFER_SIZE, "TEMP1:%.2f\n", temp1);
-                send(client_socket, buffer, (int)strlen(buffer), 0);
-
                 float temp2 = generateRandomTemp();
-                snprintf(buffer, BUFFER_SIZE, "TEMP2:%.2f\n", temp2);
-                send(client_socket, buffer, (int)strlen(buffer), 0);
-
                 float temp3 = generateRandomTemp();
-                snprintf(buffer, BUFFER_SIZE, "TEMP3:%.2f\n", temp3);
+                snprintf(buffer, BUFFER_SIZE, "TEMP:%.2f,%.2f,%.2f\n", temp1, temp2, temp3);
             } 
             // Send STFT every ~3 seconds, offset by 1.5s
             else if (counter % 60 == 30) {

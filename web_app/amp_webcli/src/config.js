@@ -12,9 +12,7 @@ const config = {
 
     // Prefixes - agreements
     IQ_PREFIX: "IQ",
-    TEMP1_PREFIX: "TEMP1",
-    TEMP2_PREFIX: "TEMP2",
-    TEMP3_PREFIX: "TEMP3",
+    TEMP_PREFIX: "TEMP",
     STFT_PREFIX: "STFT",
 
     // Charts settings

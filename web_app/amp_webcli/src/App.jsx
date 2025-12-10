@@ -88,80 +88,89 @@ function ATMApp() {
                 const timestamp = new Date().toISOString();
 
                 switch (prefix) {
-                    case config.TEMP1_PREFIX:
+                    case config.TEMP_PREFIX:
                         {
-                            const value = parseFloat(parts[1].trim());
-                            if (isNaN(value)) return;
+                            const tempValues = parts[1]
+                                .split(",")
+                                .map((v) => parseFloat(v.trim()));
 
-                            const queue = dataRef.current.temp1;
-                            queue.push({ value, timestamp });
-                            if (queue.length > config.MAX_DATA_POINTS)
-                                queue.shift();
-
-                            // Check threshold
-                            const now = Date.now();
                             if (
-                                value > temperatureThresholdRef.current &&
-                                now - lastTempAlertRef.current.temp1 > 5000
+                                tempValues.length >= 3 &&
+                                tempValues.every((v) => !isNaN(v))
                             ) {
-                                addLog(
-                                    `⚠️ ALERT: Temp 1 exceeded threshold! ${value.toFixed(
-                                        1
-                                    )}°C > ${temperatureThresholdRef.current}°C`
-                                );
-                                lastTempAlertRef.current.temp1 = now;
-                            }
-                        }
-                        break;
+                                const now = Date.now();
 
-                    case config.TEMP2_PREFIX:
-                        {
-                            const value = parseFloat(parts[1].trim());
-                            if (isNaN(value)) return;
+                                // Process temp1
+                                const queue1 = dataRef.current.temp1;
+                                queue1.push({
+                                    value: tempValues[0],
+                                    timestamp,
+                                });
+                                if (queue1.length > config.MAX_DATA_POINTS)
+                                    queue1.shift();
 
-                            const queue = dataRef.current.temp2;
-                            queue.push({ value, timestamp });
-                            if (queue.length > config.MAX_DATA_POINTS)
-                                queue.shift();
+                                if (
+                                    tempValues[0] >
+                                        temperatureThresholdRef.current &&
+                                    now - lastTempAlertRef.current.temp1 > 5000
+                                ) {
+                                    addLog(
+                                        `⚠️ ALERT: Temp 1 exceeded threshold! ${tempValues[0].toFixed(
+                                            1
+                                        )}°C > ${
+                                            temperatureThresholdRef.current
+                                        }°C`
+                                    );
+                                    lastTempAlertRef.current.temp1 = now;
+                                }
 
-                            // Check threshold
-                            const now = Date.now();
-                            if (
-                                value > temperatureThresholdRef.current &&
-                                now - lastTempAlertRef.current.temp2 > 5000
-                            ) {
-                                addLog(
-                                    `⚠️ ALERT: Temp 2 exceeded threshold! ${value.toFixed(
-                                        1
-                                    )}°C > ${temperatureThresholdRef.current}°C`
-                                );
-                                lastTempAlertRef.current.temp2 = now;
-                            }
-                        }
-                        break;
+                                // Process temp2
+                                const queue2 = dataRef.current.temp2;
+                                queue2.push({
+                                    value: tempValues[1],
+                                    timestamp,
+                                });
+                                if (queue2.length > config.MAX_DATA_POINTS)
+                                    queue2.shift();
 
-                    case config.TEMP3_PREFIX:
-                        {
-                            const value = parseFloat(parts[1].trim());
-                            if (isNaN(value)) return;
+                                if (
+                                    tempValues[1] >
+                                        temperatureThresholdRef.current &&
+                                    now - lastTempAlertRef.current.temp2 > 5000
+                                ) {
+                                    addLog(
+                                        `⚠️ ALERT: Temp 2 exceeded threshold! ${tempValues[1].toFixed(
+                                            1
+                                        )}°C > ${
+                                            temperatureThresholdRef.current
+                                        }°C`
+                                    );
+                                    lastTempAlertRef.current.temp2 = now;
+                                }
 
-                            const queue = dataRef.current.temp3;
-                            queue.push({ value, timestamp });
-                            if (queue.length > config.MAX_DATA_POINTS)
-                                queue.shift();
+                                // Process temp3
+                                const queue3 = dataRef.current.temp3;
+                                queue3.push({
+                                    value: tempValues[2],
+                                    timestamp,
+                                });
+                                if (queue3.length > config.MAX_DATA_POINTS)
+                                    queue3.shift();
 
-                            // Check threshold
-                            const now = Date.now();
-                            if (
-                                value > temperatureThresholdRef.current &&
-                                now - lastTempAlertRef.current.temp3 > 5000
-                            ) {
-                                addLog(
-                                    `⚠️ ALERT: Temp 3 exceeded threshold! ${value.toFixed(
-                                        1
-                                    )}°C > ${temperatureThresholdRef.current}°C`
-                                );
-                                lastTempAlertRef.current.temp3 = now;
+                                if (
+                                    tempValues[2] >
+                                        temperatureThresholdRef.current &&
+                                    now - lastTempAlertRef.current.temp3 > 5000
+                                ) {
+                                    addLog(
+                                        `⚠️ ALERT: Temp 3 exceeded threshold! ${tempValues[2].toFixed(
+                                            1
+                                        )}°C > ${
+                                            temperatureThresholdRef.current
+                                        }°C`
+                                    );
+                                    lastTempAlertRef.current.temp3 = now;
+                                }
                             }
                         }
                         break;
