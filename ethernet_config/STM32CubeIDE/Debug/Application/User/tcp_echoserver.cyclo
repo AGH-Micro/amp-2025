@@ -1,0 +1,8 @@
+C:/Users/Kinga1606/Desktop/maybethis_ethernet/LwIP_TCP_Echo_Server/Src/tcp_echoserver.c:85:6:tcp_echoserver_init	3
+C:/Users/Kinga1606/Desktop/maybethis_ethernet/LwIP_TCP_Echo_Server/Src/tcp_echoserver.c:120:14:tcp_echoserver_accept	2
+C:/Users/Kinga1606/Desktop/maybethis_ethernet/LwIP_TCP_Echo_Server/Src/tcp_echoserver.c:172:14:tcp_echoserver_recv	14
+C:/Users/Kinga1606/Desktop/maybethis_ethernet/LwIP_TCP_Echo_Server/Src/tcp_echoserver.c:302:13:tcp_echoserver_error	2
+C:/Users/Kinga1606/Desktop/maybethis_ethernet/LwIP_TCP_Echo_Server/Src/tcp_echoserver.c:322:14:tcp_echoserver_poll	4
+C:/Users/Kinga1606/Desktop/maybethis_ethernet/LwIP_TCP_Echo_Server/Src/tcp_echoserver.c:362:14:tcp_echoserver_sent	3
+C:/Users/Kinga1606/Desktop/maybethis_ethernet/LwIP_TCP_Echo_Server/Src/tcp_echoserver.c:393:13:tcp_echoserver_send	8
+C:/Users/Kinga1606/Desktop/maybethis_ethernet/LwIP_TCP_Echo_Server/Src/tcp_echoserver.c:453:13:tcp_echoserver_connection_close	2

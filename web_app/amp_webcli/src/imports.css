@@ -1,0 +1,34 @@
+/* === IMPORTS CSS -> CONFIG FOR CSS FILES === */
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../fonts/Montserrat-Italic.ttf') format('truetype');
+    font-weight: 400;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../fonts/Montserrat-BoldItalic.ttf') format('truetype');
+    font-weight: 400;
+    font-style: bold;
+}
+
+:root {
+    --background-color1: #FFFFFF;
+    --background-color2: #F5F6FA;
+    --background-color3: #F0F2F5;
+    --shadow: #5c5e5f;
+    --neon: #d9d9d9;
+    --border: #A3A6AC;
+    --panel-smoke: rgba(240,240,240,0.4);
+    --font_color: #000000;
+    --confirm: #00da00;
+    --confirm_s: #00b200;
+    --decilne: #ff0000;
+    --decilne_s: #d80000;
+    --AGH_green: #00693C;
+    --AGH_black: #1E1E1E;
+    --AGH_red: #A71930;
+    --AGH_white: #FFFFFF;
+}

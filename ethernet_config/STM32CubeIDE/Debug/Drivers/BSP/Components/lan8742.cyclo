@@ -1,0 +1,14 @@
+C:/Users/Kinga1606/Desktop/maybethis_ethernet/LwIP_TCP_Echo_Server/Drivers/BSP/Components/lan8742/lan8742.c:61:10:LAN8720_RegisterBusIO	5
+C:/Users/Kinga1606/Desktop/maybethis_ethernet/LwIP_TCP_Echo_Server/Drivers/BSP/Components/lan8742/lan8742.c:84:10:LAN8720_Init	14
+C:/Users/Kinga1606/Desktop/maybethis_ethernet/LwIP_TCP_Echo_Server/Drivers/BSP/Components/lan8742/lan8742.c:162:9:LAN8720_DeInit	4
+C:/Users/Kinga1606/Desktop/maybethis_ethernet/LwIP_TCP_Echo_Server/Drivers/BSP/Components/lan8742/lan8742.c:187:9:LAN8720_DisablePowerDownMode	3
+C:/Users/Kinga1606/Desktop/maybethis_ethernet/LwIP_TCP_Echo_Server/Drivers/BSP/Components/lan8742/lan8742.c:217:9:LAN8720_EnablePowerDownMode	3
+C:/Users/Kinga1606/Desktop/maybethis_ethernet/LwIP_TCP_Echo_Server/Drivers/BSP/Components/lan8742/lan8742.c:247:9:LAN8720_StartAutoNego	3
+C:/Users/Kinga1606/Desktop/maybethis_ethernet/LwIP_TCP_Echo_Server/Drivers/BSP/Components/lan8742/lan8742.c:283:9:LAN8720_GetLinkState	15
+C:/Users/Kinga1606/Desktop/maybethis_ethernet/LwIP_TCP_Echo_Server/Drivers/BSP/Components/lan8742/lan8742.c:375:9:LAN8720_SetLinkState	7
+C:/Users/Kinga1606/Desktop/maybethis_ethernet/LwIP_TCP_Echo_Server/Drivers/BSP/Components/lan8742/lan8742.c:427:9:LAN8720_EnableLoopbackMode	3
+C:/Users/Kinga1606/Desktop/maybethis_ethernet/LwIP_TCP_Echo_Server/Drivers/BSP/Components/lan8742/lan8742.c:457:9:LAN8720_DisableLoopbackMode	3
+C:/Users/Kinga1606/Desktop/maybethis_ethernet/LwIP_TCP_Echo_Server/Drivers/BSP/Components/lan8742/lan8742.c:497:9:LAN8720_EnableIT	3
+C:/Users/Kinga1606/Desktop/maybethis_ethernet/LwIP_TCP_Echo_Server/Drivers/BSP/Components/lan8742/lan8742.c:537:9:LAN8720_DisableIT	3
+C:/Users/Kinga1606/Desktop/maybethis_ethernet/LwIP_TCP_Echo_Server/Drivers/BSP/Components/lan8742/lan8742.c:576:10:LAN8720_ClearIT	2
+C:/Users/Kinga1606/Desktop/maybethis_ethernet/LwIP_TCP_Echo_Server/Drivers/BSP/Components/lan8742/lan8742.c:606:9:LAN8720_GetITStatus	2
