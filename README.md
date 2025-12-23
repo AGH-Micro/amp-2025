@@ -11,12 +11,13 @@
     - PG11 -> PB11
     - PG13 -> PB12
   - The clock configuration in `SystemClock_Config()` was updated
+- UART
 
 ## What is not tested:
 - SPI
 - I2C
 
 ## To do:
-- [ ] DSP code implementation
+- [x] DSP code implementation
 - [ ] Web app using UART for communication
 - [x] Debug Ethernet communication (if possible)
