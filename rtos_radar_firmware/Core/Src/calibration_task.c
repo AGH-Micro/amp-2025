@@ -39,7 +39,7 @@ void vCalibrationTask(void *argument) {
 	calc_dc_phi(coef, dc, &phi);
 	calc_scal(mat_x, mat_y, &phi, dc, scale);
 
-	osTimerStart(timerIQHandle, pdMS_TO_TICKS(1));
+	osTimerStart(timerIQHandle, pdMS_TO_TICKS(1000));
 	osTimerStart(timerTemperatureHandle, pdMS_TO_TICKS(10000));
 	vTaskDelete(NULL);
 }

@@ -23,7 +23,7 @@ void vSTFTTask(void *argument) {
     static float32_t work_buffer[2 * FFT_SIZE];
     float32_t magnitude[FFT_SIZE];
 
-    char uart_buff[64];
+    char uart_buff[1024];
 
     arm_cfft_radix4_init_f32(&S_fft_radix, FFT_SIZE, 0, 1);
 
@@ -48,8 +48,14 @@ void vSTFTTask(void *argument) {
         arm_cmplx_mag_f32(work_buffer, magnitude, FFT_SIZE);
 
         // CFAR (signal detection)
+        // CFAR (signal detection)
         if(xSemaphoreTake(xUARTSemaphore, 10) == pdTRUE) {
+
+            int offset = 0;
+            offset += snprintf(uart_buff + offset, sizeof(uart_buff) - offset, "STFT:");
+
             for(int i = TRAINING_CELLS + GUARD_CELLS; i < (FFT_SIZE / 2); i++) {
+
                 float32_t noise_level = 0.0f;
                 int count = 0;
 
@@ -59,14 +65,27 @@ void vSTFTTask(void *argument) {
                         count++;
                     }
                 }
+
                 noise_level /= (float32_t)count;
 
                 if(magnitude[i] > (noise_level * THRESHOLD_FACTOR)) {
+
                     float32_t freq = (float32_t)i * FS / (float32_t)FFT_SIZE;
-                    sprintf(uart_buff, "STFT:%.1f,%.4f\r\n", freq, magnitude[i]);
-                    HAL_UART_Transmit(&huart5, (uint8_t*)uart_buff, strlen(uart_buff), 10);
+
+                    offset += snprintf(uart_buff + offset,
+                                       sizeof(uart_buff) - offset,
+                                       "%.1f,%.4f,",
+                                       freq,
+                                       magnitude[i]);
+
+                    if(offset >= sizeof(uart_buff) - 32) break; // zabezpieczenie przed overflow
                 }
             }
+
+            offset += snprintf(uart_buff + offset, sizeof(uart_buff) - offset, "\r\n");
+
+            HAL_UART_Transmit(&huart5, (uint8_t*)uart_buff, offset, 10);
+
             xSemaphoreGive(xUARTSemaphore);
         }
 
