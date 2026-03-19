@@ -1,10 +1,10 @@
 .vscode/
+.metadata/
 
 # Prerequisites
 *.d
 
-
-# Object filess
+# Object files
 *.o
 *.ko
 *.obj
