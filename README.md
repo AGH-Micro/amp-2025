@@ -18,6 +18,6 @@
 - I2C
 
 ## To do:
-- [x] DSP code implementation
+
 - [ ] Web app using UART for communication
 - [x] Debug Ethernet communication (if possible)
